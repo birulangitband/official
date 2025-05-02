@@ -3,7 +3,7 @@
   <head>
 
     <meta charset="utf-8">
-    <title>birulangitband.</title>
+    <title>Biru Langit Band.</title>
     <meta name="description" content="Your description.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,15 +27,44 @@
   </noscript>
   <a id="top"></a>
   <section class="mainView">
-    <!-- Bloc share -->
-    <div class="shareBtn">
-      <div class="elementBtn facebook">
-          <img src="img/facebook.svg" alt="The < Band Name > sur Facebook">
-      </div>
-      <div class="elementBtn instagram">
-          <img src="img/instagram.svg" alt="The < Band Name > sur instagram">
-      </div>
+<body>
+    <div class="content">
+        <!-- Your page content -->
+        <div style="height: 320px;"></div>
     </div>
+
+    <!-- Share Button -->
+    <div class="share-container" id="shareContainer">
+        <div class="social-icons">
+            <!-- WhatsApp -->
+            <a href="http://wa.me/6285703271346" target="_blank" class="social-icon whatsapp">
+                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp">
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/birulangitband_official" target="_blank" class="social-icon instagram">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            </a>
+            <!-- YouTube -->
+            <a href="https://youtu.be/UIMzjgI2sMY" target="_blank" class="social-icon youtube">
+                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670147.png" alt="YouTube">
+            </a>
+            <!-- Spotify -->
+            <a href="https://open.spotify.com/track/0711vGrsPBtbLn7uDeRuph?si=6s2yUzR8Sp6giQtHadnmqQ" target="_blank" class="social-icon spotify">
+                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="Spotify">
+            </a>
+            <!-- Google Maps -->
+            <a href="https://maps.app.goo.gl/bwPyv8GjM738r7Ur8" target="_blank" class="social-icon google-maps">
+                <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Google Maps">
+            </a>
+        </div>
+        <div class="share-btn" id="shareBtn">
+            <img src="img/Biru Langit Logo 2025 Square.png" alt="Share">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+    
     <!-- Bloc menu -->
     <div class="menu">
       <div class=" line line1"></div>
@@ -78,126 +107,57 @@
   <section class="nextShow">
     <h2 class="animatableX">Next show</h2>
     <div class="separator animatableOpacity"></div>
-	
     <div class="ss-nextShow">
-      <p class="hardLight animatableY">
-        <div id="next-event"></div>
+      <div id="next-event"></div>
 
-<script>
-  fetch('https://script.google.com/macros/s/AKfycbzvdSKw05ArtJGjcf97iRooXSE2YpujFWb5Gv5dXNzBUvg5onj0ukLwiLptt-he1TiF8w/exec')
-    .then(response => response.json())
-    .then(event => {
-      if (event.error) {
-        document.getElementById('next-event').innerText = event.error;
-      } else {
-        document.getElementById('next-event').innerHTML = `
-          <h3>${event.title}</h3>
-          <p>🗓️ ${event.date}</p>
-          <p>📍 ${event.location || 'Online/TBA'}</p>
-        `;
-      }
-    });
-</script>
-          <p class="pink"><a href="#date">Show all dates ➡</a></p>
+  <script>
+    const API_KEY = 'AIzaSyCFzpAZ61Q6QON5bqhnQSRGeKfDqgiwJvQ';
+    const CALENDAR_ID = 'birulangitband.official@gmail.com';
+
+    fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${new Date().toISOString()}&maxResults=1&orderBy=startTime&singleEvents=true`)
+      .then(response => response.json())
+      .then(data => {
+        const event = data.items[0];
+        if (event) {
+          document.getElementById('next-event').innerHTML = `
+            <div class="animatableY">
+              <h3>${event.summary}</h3>
+              <p>🗓️ ${event.start.dateTime || event.start.date}</p>
+              <p>📍 ${event.location || 'Online/TBA'}</p>
+            </div>
+          `;
+        } else {
+          document.getElementById('next-event').innerHTML = `
+            <div class="animatableX">Tidak ada event yang akan datang</div>
+          `;
+        }
+      });
+  </script>
+      <p class="pink"><a href="#date">Show all dates ➡</a></p>
     </div>
 
   </section>
 
   <a id="band"></a>
   <section class="band">
-    <h2 class="animatableX">Biru Langit Band</h2>
+    <h2 class="animatableX"><&nbsp;Your Band Name here&nbsp;></h2>
     <div class="separator animatableOpacity"></div>
     <p class="hardLight animatableY" lang="en">
-      " Tentang Kami "
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident.. "
     </p>
-    <p class="animatableY" style="line-height:normal; text-align:justify;">
-    <span style="font-weight:bold"> 🎶90%Indonesian Music 🎶10%Internasional Music 🎶Available for your event 🎤 🎉•Regular Cafe •Weddings •Event Party etc.🎉 
-<br /><br />
-	<span style="font-weight:bold;font-style:italic"> Live Music Special Perfomance: </span> Datang, registrasi, dan bersantailah sejenak. Cari nama Anda di daftar tempat duduk, lalu ambil dan nikmati. <span style="font-style:italic;">  welcome eat & drink. </span> Bersiaplah untuk menyantap hidangan yang disiapkan eksklusif sambil menikmati live musik, bernyanyi & Berdansa sepanjang malam, hingga pesta selesai. Mau pesan kehadiran Musik Kami? <a href="#Contact" style="text-decoration: underline;">Hubungi➡</a>
+    <p class="animatableY">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, vel quia modi obcaecati quas velit nam illo itaque autem porro repellat, animi magni enim est ullam quaerat nobis aspernatur id? Aut provident officia autem expedita doloremque tenetur natus laborum dolorum mollitia quisquam tempore molestiae, pariatur, eos, aliquid saepe animi obcaecati.
+      <br />
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum pariatur eum rem inventore error, nobis ea aperiam, tenetur saepe iure ipsa reiciendis! Animi aliquid numquam aliquam eos quisquam ducimus quam sequi dolorum unde sint voluptatem, quae corrupti modi nisi! Omnis amet, distinctio sapiente expedita quod possimus cum fugit similique, architecto.
+      <br />
+      Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Sequi quisquam doloribus consectetur eligendi. Asperiores porro reiciendis commodi nisi nulla. Esse porro vel repellat placeat sed hic explicabo a, asperiores laborum sint, optio enim! In dignissimos fuga fugiat mollitia itaque iure, blanditiis officia nostrum expedita consectetur repudiandae libero nemo laboriosam maiores.
+      <br />
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae perspiciatis accusantium voluptatem aspernatur ipsa fugiat, ab quo commodi tempore quasi nihil. Possimus sed officia, earum deserunt doloremque magni? Dicta ab repudiandae voluptas sapiente quam, natus odit vero. Porro quis id sunt dolores voluptatum, veniam ullam sit iste! Ipsum, veritatis, adipisci.
       <br /><br />
-	<span style="font-weight:bold"> Bersiaplah untuk Malam yang Meriah! </span> Kami ingin mengundang Anda ke pesta liburan akhir pekan ini, akan menjadi malam perayaan penting  <a href="#date" style="text-decoration: underline;">(jadwal acara)</a> . Jadi jangan lupa untuk bersiap. 
-
-Biru Langit akan mengawalinya dengan sejumlah pengumuman dan kejutan besar. nikmati hidangan sambil menikmati suasana yang meriah. Jangan lupa datang & bernyanyi bersama, tiada kesan tanpa kehadiran Anda.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dicta, cupiditate, deleniti adipisci dolorum nesciunt cumque qui! Iusto dicta ab perspiciatis, deserunt. Autem tempora fuga eligendi sint aliquid? Consequatur culpa vel nam aliquam, corporis mollitia quo commodi possimus incidunt iusto eos veniam nobis, tempore officia voluptatum nulla at eius omnis aut quam inventore beatae asperiores? Nisi maxime, quo velit debitis quia ab, repellat aspernatur sed neque accusamus voluptates laborum reprehenderit! Provident quod maiores quidem qui? Cum, vel deleniti voluptas, beatae nulla odit perferendis eligendi ab reiciendis nostrum esse aperiam, fugiat, laboriosam aspernatur accusamus facilis a! Quaerat blanditiis, impedit assumenda fugit officia ipsam quis et ab maxime eaque porro facilis repudiandae quam quas, earum fuga animi nostrum eius dolores magni error culpa, officiis. Voluptates praesentium excepturi iusto dolores nemo dignissimos dicta, cupiditate nam repellat consequuntur rerum dolorum aliquid eveniet, minus eius quasi at ullam recusandae deserunt soluta quo facere voluptas. Delectus, nesciunt. Inventore molestias laboriosam libero tenetur saepe nihil amet laborum suscipit, sed fuga, quae ut, eligendi earum. Ab, asperiores, vero! Facilis reiciendis beatae consectetur pariatur quasi quam nemo inventore animi soluta vitae, numquam quisquam suscipit ut id cum incidunt! Maxime aliquam ex adipisci optio neque officia reprehenderit necessitatibus. Impedit, saepe!
     </p>
     <div class="imgContent">
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    /* Reset Margin/Padding Body */
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Container Utama */
-    .instagram-container {
-      width: 100%;
-      max-width: 540px;
-      background-color: #000000;
-      border-radius: 12px;
-      overflow: hidden;
-      margin: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Style untuk tombol Hubungi */
-    .contact-button {
-      margin-top: 20px;
-      text-align: center;
-    }
-    
-    .contact-button a {
-      color: #405DE6;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    
-    .contact-button a:hover {
-      background-color: #f0f0f0;
-    }
-    
-    .contact-button u {
-      text-decoration: underline;
-    }
-
-    /* Penyesuaian Mobile */
-    @media (max-width: 600px) {
-      .instagram-container {
-        max-width: 100%;
-        border-radius: 0;
-        margin: 0;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Container Embed Instagram -->
-  <div class="instagram-container">
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/birulangitband_official/" data-instgrm-version="13">
-      <!-- Konten akan di-load otomatis oleh script Instagram -->
-    </blockquote>
-  </div>
-
-  <!-- Tombol Hubungi -->
-  <div class="contact-button">
-    <a href="#date"><u>Hubungi➡</u></a>
-  </div>
-
-  <!-- Script Instagram (wajib) -->
-  <script async src="//www.instagram.com/embed.js"></script>
-</body>
-</html>      <div class="card animatableY">
+      <div class="card animatableY">
         <img class="lazyload" src="./img/guitar-rec-blur.jpg" data-src="./img/guitar-rec.jpg" alt="Drummer < Band Name >">
         <noscript>
           <img src="./img/guitar-rec.jpg" alt="Drummer < Band Name >">
@@ -228,9 +188,35 @@ Biru Langit akan mengawalinya dengan sejumlah pengumuman dan kejutan besar. nikm
   <section class="date">
     <h2 class="animatableX">Shows</h2>
     <div class="separator animatableOpacity"></div>
-<div class="calendar-container">
-  <iframe src="https://calendar.google.com/calendar/embed?src=birulangitband.official%40gmail.com&ctz=Asia%2FJakarta" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-</div>
+
+      <!-- Table date -->
+      <table>
+        <tr class="animatableY">
+          <td>29/11/2019</td>
+          <td><span class="white"><a href="">Madison Square Garden</a></span><br />Manhattan</td>
+          <td>21h</td>
+        </tr>
+        <tr class="animatableY">
+          <td>20/09/2019</td>
+          <td><span class="white"><a href="">Carnegie Hall</a></span><br />Manhattan</td>
+          <td>21h</td>
+        </tr>
+        <tr class="animatableY">
+          <td>26/07/2019</td>
+          <td><span class="white"><a href="">Fox Theater</a></span><br />Détroit</td>
+          <td>21h</td>
+        </tr>
+        <tr class="animatableY">
+          <td>20/07/2019</td>
+          <td><span class="white"><a href="">Apollo Theater</a></span><br />Manhattan</td>
+          <td>21h</td>
+        </tr>
+        <tr class="animatableY">
+          <td>10/05/2019</td>
+          <td><span class="white"><a href="">924 Gilman Street</a></span><br />Berkeley</td>
+          <td>21h</td>
+        </tr>
+      </table>
 
     </section>
 
@@ -276,12 +262,11 @@ Biru Langit akan mengawalinya dengan sejumlah pengumuman dan kejutan besar. nikm
     <div class="separator animatableOpacity"></div>
 
     <p class="hardLight">
-      -&nbsp;&nbsp;Biru Langit Band&nbsp;&nbsp;-
+      -&nbsp;<&nbsp;Your Band Name here&nbsp;>&nbsp;-
       <br />
-      Kota Banjar
+      New York
     </p>
-	
-	    <p id="insertMail" class="hardLight"></p>
+    <p id="insertMail" class="hardLight"></p>
 
     <form class="contactForm">
 
@@ -323,14 +308,14 @@ Biru Langit akan mengawalinya dengan sejumlah pengumuman dan kejutan besar. nikm
       <img class="bandBanner" src="./img/band_logo.svg" alt="">
       <p class="bolder">2020</p>
     </div>
-    <p class="bolder"><&nbsp;Biru Langit Band&nbsp;></p>
+    <p class="bolder"><&nbsp;YOUR BAND NAME HERE&nbsp;></p>
     <!-- Bloc share -->
     <div class="socialBanner">
         <img class="facebook" src="img/facebook-white.svg" alt="The < Band Name > sur facebook">
         <img class="instagram" src="img/instagram-white.svg" alt="The < Band Name > sur instagram">
     </div>
 
-    <p>Copyright 2025 | <a href="">Music Entertaintment</a></p>
+    <p>Copyright 2020 | <a href="">Mentions légales</a></p>
   </footer>
 
     <!-- Lazyload-->
