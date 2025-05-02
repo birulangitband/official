@@ -93,6 +93,10 @@ function doGet() {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
+
+
+
+
 // Parallax effect and gsap
 $(function () {
   if (!window.location.pathname.match("mentions")) {
@@ -116,6 +120,103 @@ window.addEventListener("load", function () {
   }
 })
 
+document.addEventListener('DOMContentLoaded', function() {
+    const mainImage = document.getElementById('mainImage');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    let currentIndex = 0;
+    let autoPlayInterval;
+    const autoPlayDelay = 3000; // 3 seconds
+    
+    // Initialize the gallery
+    initGallery();
+    
+    function initGallery() {
+        // Set up event listeners
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', () => changePhoto(index));
+        });
+        
+        prevButton.addEventListener('click', prevPhoto);
+        nextButton.addEventListener('click', nextPhoto);
+        
+        // Start auto-play
+        startAutoPlay();
+        
+        // Pause auto-play when hovering over gallery
+        const gallery = document.querySelector('.gallery-container');
+        gallery.addEventListener('mouseenter', pauseAutoPlay);
+        gallery.addEventListener('mouseleave', startAutoPlay);
+    }
+    
+    function changePhoto(index) {
+        currentIndex = index;
+        updateMainImage();
+        updateThumbnails();
+        resetAutoPlay();
+    }
+    
+    function prevPhoto() {
+        currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+        updateMainImage();
+        updateThumbnails();
+        resetAutoPlay();
+    }
+    
+    function nextPhoto() {
+        currentIndex = (currentIndex + 1) % thumbnails.length;
+        updateMainImage();
+        updateThumbnails();
+        resetAutoPlay();
+    }
+    
+    function updateMainImage() {
+        // Add fade effect
+        mainImage.style.opacity = 0;
+        
+        setTimeout(() => {
+            mainImage.src = thumbnails[currentIndex].src;
+            mainImage.alt = thumbnails[currentIndex].alt;
+            mainImage.style.opacity = 1;
+        }, 300); // Match this with CSS transition time
+    }
+    
+    function updateThumbnails() {
+        thumbnails.forEach((thumb, index) => {
+            if (index === currentIndex) {
+                thumb.classList.add('active');
+            } else {
+                thumb.classList.remove('active');
+            }
+        });
+    }
+    
+    function startAutoPlay() {
+        if (!autoPlayInterval) {
+            autoPlayInterval = setInterval(nextPhoto, autoPlayDelay);
+        }
+    }
+    
+    function pauseAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    }
+    
+    function resetAutoPlay() {
+        pauseAutoPlay();
+        startAutoPlay();
+    }
+    
+    // Start auto-play initially
+    startAutoPlay();
+});
+
+
+
+
 // Manage vidéo
 $(function () {
     $('video').on('click', function(event) {
@@ -123,159 +224,46 @@ $(function () {
       document.getElementById('tucoVideo').play();
     });
 })
+document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Get form values
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const message = document.getElementById('message').value.trim();
+  
+  // Validate phone number (simple validation)
+  const phoneRegex = /^[0-9]{10,15}$/;
+  if (!phoneRegex.test(phone)) {
+      alert('Nomor HP tidak valid. Harap masukkan nomor yang benar (10-15 digit angka).');
+      return;
+  }
+  
+  // Format phone number (remove leading 0 if any and add country code)
+  let formattedPhone = phone;
+  if (formattedPhone.startsWith('0')) {
+      formattedPhone = '62' + formattedPhone.substring(1);
+  } else if (!formattedPhone.startsWith('62')) {
+      formattedPhone = '62' + formattedPhone;
+  }
+  
+  // Create the WhatsApp URL
+  const encodedMessage = encodeURIComponent(`Halo, saya ${name}.\n${message}`);
+  const whatsappUrl = `https://wa.me/${formattedPhone}?text=${encodedMessage}`;
+  
+  // For demo purposes, we'll show the URL in console
+  console.log('WhatsApp URL:', whatsappUrl);
+  
+  // In this specific case, we'll send to the fixed number +6285703271346
+  const targetUrl = `https://wa.me/6285703271346?text=${encodedMessage}`;
+  
+  // Open WhatsApp in a new tab
+  window.open(targetUrl, '_blank');
+  
+  // Optional: Reset the form after submission
+  // this.reset();
+});
 
-// Manage form
-$(function () {
-    // Name
-      $('#nom').on('blur input', function () {
-        if ($('#nom').val().length >= 50) {
-          $('#helpNom').text('50 characters max').hide().show();
-        } else {
-          $('#helpNom').slideUp(400);
-        }
-      })
-      // Phone
-        $('#telephone').on('blur input', function () {
-            let regexTelephone = /[0]{1}[1-7]{1}[0-9]{8}/;
-            let telEntry = String(document.getElementById('telephone').value);
-            for (var i = 0; i < telEntry.length; i++) {
-              telEntry = telEntry.replace(" ", "");
-            }
-            if (!telEntry.match(regexTelephone)) {
-                $('#helpTel').text('Incorrect phone number').hide().show();
-            } else {
-                $('#helpTel').slideUp(400);
-            }
-        })
-
-    // Email
-        $('#mail').on('blur input', function () {
-          let regexMail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
-          let mailEntry = $('input#mail').val();
-          if (!mailEntry.match(regexMail)) {
-            $('#helpMail').text('Incorrect email address').hide().show();
-          } else {
-            $('#helpMail').slideUp(400);
-          }
-        })
-    // Check Robot
-        $('#checkRobot').on('blur input', function () {
-            if ($('#checkRobot').val() != 7) {
-              $('#helpRobot').text('Incorrect result of the operation').hide().show();
-            } else {
-              $('#helpRobot').slideUp(400);
-            }
-        })
-    // Message
-        $('#message').on('blur input', function () {
-          if ($('#message').val().length >= 3000) {
-              $('#helpMessage').text('Your message must not exceed 3000 characters').hide().slideDown(400);
-          } else {
-            $('#helpMessage').slideUp(400);
-          }
-        })
-  })
-
-// Contact form
-$(function () {
-      $('.contactForm').on('submit', function (e) {
-          e.preventDefault();
-          let nom = $('#nom').val();
-          let telephone = $('#telephone').val();
-          let mail = $('#mail').val();
-          let message = $('#message').val();
-          let newsletter = $('input[name="newsletter"]:checked').val();
-          let checkRobot = $('#checkRobot').val();
-          if ($('#checkRobot').val() == 7) {
-              $.post('../datas/sendFormContact.php',
-                      {nom: nom,
-                        telephone: telephone,
-                        mail: mail,
-                        message: message,
-                        newsletter: newsletter,
-                        checkRobot: checkRobot },
-                        function(data, textStatus, xhr) {
-                            $('form').fadeOut(400, function() {
-                                $('#retourFormulaire').css({"padding": "10px",
-                                                            "margin-top": "160px",
-                                                            "margin-bottom": "160px",
-                                                            "margin-left": "auto",
-                                                            "margin-right": "auto",
-                                                            "color": "white",
-                                                            "font-size": "1rem",
-                                                            "text-align": "center"});
-                                $('#retourFormulaire').html(data);
-                            });
-                            $('#nom').val('');
-                            $('#telephone').val('');
-                            $('#mail').val('');
-                            $('#message').val('');
-                            $('#checkRobot').val('');
-                          });
-            } else {
-                alert('Incorrect anti robot check result !');
-            }
-
-      })
-})
-
-// Form newsletter input blur
-$(function () {
-  let regexMail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
-    $('#emailNews').on('blur input', function(event) {
-        //event.preventDefault();
-        let mailEntry = $('#emailNews').val();
-        if (!mailEntry.match(regexMail)) {
-          $('#helpMailNews').text('Incorrect email address').hide().show();
-          $('#hideNews').hide();
-        } else {
-          $('#helpMailNews').slideUp(100, function () {
-            // Apparition checkRobotNews
-            $('#hideNews').fadeIn();
-          });
-        }
-    });
-    $('#checkRobotNews').on('blur input', function(event) {
-        if ($('#checkRobotNews').val() != 7) {
-          $('#helpMailNews').text('Incorrect result').hide().show();
-        } else {
-          $('#helpMailNews').slideUp(100, function () {
-          });
-        }
-    });
-})
-
-// Form newsletter ajax send
-$(function () {
-      $('.newsletterForm').on('submit', function (e) {
-          e.preventDefault();
-          let mail = $('#emailNews').val();
-          let checkRobot = $('#checkRobotNews').val();
-          if ($('#checkRobotNews').val() == 7 ) {
-              $.post('../datas/sendFormSubscription.php',
-                      { mail: mail,
-                        checkRobot: checkRobot },
-                        function(data, textStatus, xhr) {
-                            $('.newsletterForm').fadeOut(400, function() {
-                                $('#retourNewsFormulaire').css({"padding": "10px",
-                                                            "margin-top": "60px",
-                                                            "margin-bottom": "60px",
-                                                            "margin-left": "auto",
-                                                            "margin-right": "auto",
-                                                            "color": "white",
-                                                            "font-size": "1rem",
-                                                            "text-align": "center"});
-                                $('#retourNewsFormulaire').html(data);
-                            });
-                            $('#emailNews').val('');
-                            $('#checkRobotNews').val('');
-                          });
-            } else {
-                alert('Incorrect anti robot check result !');
-            }
-
-      })
-})
 
 // Animations on scroll
 $(function () {
@@ -364,18 +352,3 @@ $(function () {
     });
 })
 
-// Locations
-$(function () {
-    $(".card").on('click', () => {window.location.href = "https://www.instagram.com/"});
-})
-// Location socials
-$(function () {
-    $('.facebook').on('click', function(event) {
-      event.preventDefault();
-      window.location.href = "https://facebook.com/";
-    });
-    $('.instagram').on('click', function(event) {
-      event.preventDefault();
-      window.location.href = "https://www.instagram.com/";
-    });
-})
