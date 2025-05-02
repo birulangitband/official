@@ -152,8 +152,8 @@ body {
   right: 5%;
   width: 50px;
   height: 50px;
-  background-color: #F4591E;
-  border: solid 2px #F4591E;
+  background-color: #ADD8E6;
+  border: solid 2px #00BFFF;
   border-radius: 50%;
   cursor: pointer;
   z-index: 3;
@@ -200,7 +200,7 @@ body {
   width: 50px;
   height: 50px;
   background-color: #1A1B1D;
-  border: solid 2px #F4591E;
+  border: solid 2px #00BFFF;
   border-radius: 50%;
   cursor: pointer;
   transition: all ease-in-out 100ms;
@@ -289,7 +289,7 @@ body {
 }
 
 section {
-  min-height: 80vh;
+  min-height: 0vh;
   padding: 50px 15% 50px 15%;
   background-color: #1A1B1D;
 }
@@ -297,8 +297,8 @@ section {
 .separator {
   width: 20vw;
   height: 2px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   background-color: #F4591E;
 }
 
@@ -308,9 +308,10 @@ section {
   max-height: 40vh;
   color: #9fa0ac;
   background: url("../img/cover.png");
-  background-size: contain;
-  background-position: center;
+  background-position: top center;
+  background-repeat: no-repeat;
   background-color: transparent;
+  background-size: contain;
 }
 
 h1 {
@@ -361,7 +362,7 @@ h2#slogan {
   bottom: 10%;
   font-size: 5vh;
   font-weight: 600;
-  color: #F4591E;
+  color: #00BFFF;
   text-shadow: 0 2px 10px #1A1B1D;
   opacity: 0;
   transform: translateY(-45px);
@@ -394,7 +395,7 @@ h2#slogan {
 p {
   color: #9fa0ac;
   line-height: 30px;
-  margin: 50px 0 50px 0;
+  margin: 0px 5% 0px 5%;
 }
 
 p.miniPara {
@@ -409,7 +410,113 @@ p.miniPara {
   font-weight: 900;
   text-align: center;
   width: 70%;
-  margin: 70px auto 70px auto;
+  margin: 20px auto 20px auto;
+}
+
+.gallery-container {
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.main-photo {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.main-photo img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.5s ease;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  max-width: 390px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.thumbnail:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.thumbnail.active {
+  opacity: 1;
+  border: 2px solid #4CAF50;
+  transform: scale(1.05);
+}
+
+
+
+.view-album a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.view-album a:hover {
+  background-color: #45a049;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animatableY {
+  animation: fadeIn 0.5s ease-out;
 }
 
 .imgContent {
@@ -477,12 +584,22 @@ p.miniTitle {
 }
 
 p.pink {
-  color: #F4591E;
+  color: #00BFFF;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 250ms cubic-bezier(0, 0.69, 0.46, 0.95);
+  animation: fadeIn 5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 p.pink:hover {
   transform: translateX(5px);
@@ -539,7 +656,7 @@ p.pink:hover {
 }
 
 footer {
-  background-color: #F4591E;
+  background-color: #2A5CAA;
   min-height: 15vh;
 }
 
@@ -713,9 +830,12 @@ footer img {
   align-items: center;
 }
 .footerBaner .bandBanner {
-  margin: 0 30px;
+  position: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 0px;
   width: 100%;
-  max-width: 75px;
+  max-width: 100px;
   cursor: default;
 }
 
@@ -804,11 +924,11 @@ button[name=backSite] {
     transform: scaleX(1);
   }
 }
-@media screen and (max-width: 767px) {
+@media screen  {
   h1 {
-    width: 90%;
+    width: 100%;
     font-size: 4vh;
-    bottom: 45%;
+    bottom: 40%;
   }
 
   h2#slogan {
@@ -826,7 +946,7 @@ button[name=backSite] {
   }
 
   section {
-    padding: 50px 2% 50px 2%;
+    padding: 10px 2% 10px 2%;
   }
 
   section.blocNewsletter {
@@ -848,6 +968,90 @@ button[name=backSite] {
     max-width: 100%;
   }
 
+
+  .chat-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 390px;
+    margin: 10px auto;
+}
+
+h3 {
+    color: #87CEEB;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #075e54;
+    font-size: 14px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #075e54;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(7, 94, 84, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    background-color: #25D366;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #128C7E;
+}
+
+@media (max-width: 400px) {
+    .chat-container {
+        padding: 15px;
+    }
+    
+    h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    input, textarea {
+        padding: 8px 10px;
+    }
+
+  
   .contactForm input, .contactForm textarea {
     width: 90%;
   }
@@ -887,19 +1091,14 @@ button[name=backSite] {
     padding-left: 1px;
   }
 }
-@media all and (min-width: 768px) and (max-width: 1024px) {
-  form.newsletterForm input[type=email] {
-    width: 60%;
-  }
+
 
   .contactForm input, .contactForm textarea {
     width: 90%;
   }
-}
-@media all and (max-width: 320px) {
-  table {
-    font-size: 0.8rem;
-  }
+
+
+  
   table td:last-of-type {
     display: none;
   }
@@ -915,6 +1114,9 @@ button[name=backSite] {
   .footerBaner p.bolder {
     font-size: 0.8rem;
   }
-}
+  
+
+  
+
 
 /*# sourceMappingURL=style.css.map */
