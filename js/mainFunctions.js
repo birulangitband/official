@@ -40,6 +40,59 @@ $(function () {
     })
 })
 
+document.addEventListener('DOMContentLoaded', function() {
+  const shareContainer = document.getElementById('shareContainer');
+  const shareBtn = document.getElementById('shareBtn');
+  
+  // Toggle social icons on button click
+  shareBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      shareContainer.classList.toggle('active');
+  });
+  
+  // Close social icons when clicking anywhere else
+  document.addEventListener('click', function() {
+      shareContainer.classList.remove('active');
+  });
+  
+  // Close social icons when scrolling
+  window.addEventListener('scroll', function() {
+      shareContainer.classList.remove('active');
+  });
+  
+  // Prevent closing when clicking on social icons
+  const socialIcons = document.querySelectorAll('.social-icon');
+  socialIcons.forEach(icon => {
+      icon.addEventListener('click', function(e) {
+          e.stopPropagation();
+      });
+  });
+});
+
+function getUpcomingEvent() {
+  const calendarId = "birulangitband.official@gmail.com"; // Ganti dengan ID kalender Anda
+  const now = new Date();
+  const events = CalendarApp.getEvents(now, new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000)); // Cari event 30 hari ke depan
+  if (events.length > 0) {
+    const nextEvent = events[0];
+    return {
+      title: nextEvent.getTitle(),
+      date: nextEvent.getStartTime().toLocaleString(),
+      location: nextEvent.getLocation(),
+      description: nextEvent.getDescription()
+    };
+  } else {
+    return { error: "Tidak ada event yang akan datang" };
+  }
+}
+
+// Untuk diakses via URL
+function doGet() {
+  const event = getUpcomingEvent();
+  return ContentService.createTextOutput(JSON.stringify(event))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
 // Parallax effect and gsap
 $(function () {
   if (!window.location.pathname.match("mentions")) {
