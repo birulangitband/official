@@ -8,12 +8,14 @@ $(function () {
             $('.ss-menu3').addClass('visible3');
             $('.ss-menu4').addClass('visible4');
             $('.ss-menu5').addClass('visible5');
+            $('.ss-menu6').addClass('visible6');
         } else {
             $('.ss-menu1').removeClass('visible1');
             $('.ss-menu2').removeClass('visible2');
             $('.ss-menu3').removeClass('visible3');
             $('.ss-menu4').removeClass('visible4');
             $('.ss-menu5').removeClass('visible5');
+            $('.ss-menu6').removeClass('visible6');
         }
     })
 })
@@ -25,6 +27,7 @@ $(function () {
       $('.ss-menu3').removeClass('visible3');
       $('.ss-menu4').removeClass('visible4');
       $('.ss-menu5').removeClass('visible5');
+      $('.ss-menu6').removeClass('visible6');
     })
 })
 $(function () {
@@ -36,6 +39,7 @@ $(function () {
           $('.ss-menu3').removeClass('visible3');
           $('.ss-menu4').removeClass('visible4');
           $('.ss-menu5').removeClass('visible5');
+          $('.ss-menu6').removeClass('visible6');
         }
     })
 })
@@ -93,8 +97,91 @@ function doGet() {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
+// Tambah Kalender ke halaman HTML
+document.addEventListener('DOMContentLoaded', function() {
+  const API_KEY = 'AIzaSyCFzpAZ61Q6QON5bqhnQSRGeKfDqgiwJvQ';
+  const CALENDAR_ID = 'birulangitband.official@gmail.com';
+  const CALENDAR_URL = 'https://calendar.google.com/calendar/u/0/r?cid=birulangitband.official@gmail.com';
 
+  fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${new Date().toISOString()}&maxResults=1&orderBy=startTime&singleEvents=true`)
+      .then(response => response.json())
+      .then(data => {
+          const event = data.items[0];
+          const eventElement = document.getElementById('next-event');
+          
+          if (event) {
+              // Format date in Indonesian
+              const monthNames = [
+                  'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+              ];
+              
+              const dayNames = [
+                  'Minggu', 'Senin', 'Selasa', 'Rabu', 
+                  'Kamis', 'Jumat', 'Sabtu'
+              ];
 
+              let eventDate, eventTime;
+              if (event.start.dateTime) {
+                  const dateObj = new Date(event.start.dateTime);
+                  const dayName = dayNames[dateObj.getDay()];
+                  const date = dateObj.getDate();
+                  const month = monthNames[dateObj.getMonth()];
+                  const year = dateObj.getFullYear();
+                  const hours = dateObj.getHours().toString().padStart(2, '0');
+                  const minutes = dateObj.getMinutes().toString().padStart(2, '0');
+                  
+                  eventDate = `${dayName}, ${date} ${month} ${year}`;
+                  eventTime = `${hours}:${minutes}`;
+              } else {
+                  const dateObj = new Date(event.start.date);
+                  const dayName = dayNames[dateObj.getDay()];
+                  const date = dateObj.getDate();
+                  const month = monthNames[dateObj.getMonth()];
+                  const year = dateObj.getFullYear();
+                  
+                  eventDate = `${dayName}, ${date} ${month} ${year}`;
+                  eventTime = null;
+              }
+
+              // Create location element
+              let locationElement;
+              if (event.location) {
+                  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`;
+                  locationElement = `<a href="${mapsUrl}" target="_blank" class="location-link">${event.location}</a>`;
+              } else {
+                  locationElement = 'Online/TBA';
+              }
+
+              eventElement.innerHTML = `
+                  <div class="animatableY" style="text-align: center;">
+                      <h3>${event.summary}</h3>
+                      <p>🗓️ ${eventDate}${eventTime ? ` • ${eventTime}` : ''}</p>
+                      <p>📍 ${locationElement}</p>
+                      <p>"${event.description || 'Tidak ada deskripsi'}"</p>
+                      <p>🔝📍 -Maps Google (click location)-🔝</p>
+                      <a href="${CALENDAR_URL}" target="_blank" class="calendar-link">📅+ Add Biru Langit Show</a>
+                  </div>
+              `;
+          } else {
+              eventElement.innerHTML = `
+                  <div class="animatableX" style="text-align: center;">
+                      <p>Tidak ada event yang akan datang</p>
+                      <a href="${CALENDAR_URL}" target="_blank" class="calendar-link">📅+ Add Biru Langit Show</a>
+                  </div>
+              `;
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching calendar data:', error);
+          document.getElementById('next-event').innerHTML = `
+              <div class="error" style="text-align: center;">
+                  <p>Gagal memuat data event. Silakan coba lagi nanti.</p>
+                  <a href="${CALENDAR_URL}" target="_blank" class="calendar-link">📅+ Add Biru Langit Show</a>
+              </div>
+          `;
+      });
+});
 
 
 // Parallax effect and gsap
