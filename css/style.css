@@ -353,6 +353,16 @@ section {
   background-color: #F4591E;
 }
 
+.separator-center {
+  width: 20vw;
+  height: 2px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #F4591E;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mainView {
   position: relative;
   min-height: 40vh;
@@ -628,6 +638,7 @@ p.miniPara {
   background-color: rgba(244, 89, 30, 0.7);
   z-index: 2;
   transition: all ease-in-out 150ms;
+  pointer-events: none;
 }
 .imgContent .card:hover::before {
   opacity: 1;
@@ -729,6 +740,10 @@ p.pink:hover {
 footer {
   background-color: #2A5CAA;
   min-height: 15vh;
+}
+
+.contact {
+  text-align: center;
 }
 
 .contact {
