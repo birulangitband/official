@@ -148,7 +148,11 @@ document.addEventListener('DOMContentLoaded', function() {
               let locationElement;
               if (event.location) {
                   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`;
-                  locationElement = `<a href="${mapsUrl}" target="_blank" class="location-link">${event.location}</a>`;
+                  locationElement = `
+                      <a href="${mapsUrl}" target="_blank" class="location-link">${event.location}</a>
+                      <br>
+                      <button onclick="window.open('${mapsUrl}', '_blank')" class="calendar-link">Click to view on Maps</button>
+                  `;
               } else {
                   locationElement = 'Online/TBA';
               }
@@ -159,7 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
                       <p>🗓️ ${eventDate}${eventTime ? ` • ${eventTime}` : ''}</p>
                       <p>📍 ${locationElement}</p>
                       <p>"${event.description || 'Tidak ada deskripsi'}"</p>
-                      <p>🔝📍 -Maps Google (click location)-🔝</p>
+                  </div>
+                  
+                  <div class="animatableY" style="text-align: center;">
                       <a href="${CALENDAR_URL}" target="_blank" class="calendar-link">📅+ Add Biru Langit Show</a>
                   </div>
               `;
@@ -167,6 +173,8 @@ document.addEventListener('DOMContentLoaded', function() {
               eventElement.innerHTML = `
                   <div class="animatableX" style="text-align: center;">
                       <p>Tidak ada event yang akan datang</p>
+                  </div>
+                  <div class="animatableY" style="text-align: center;">
                       <a href="${CALENDAR_URL}" target="_blank" class="calendar-link">📅+ Add Biru Langit Show</a>
                   </div>
               `;
@@ -192,20 +200,7 @@ $(function () {
   }
 })
 
-// Script adresse Email
-// Listener pour chargement adresse mailto
-window.addEventListener("load", function () {
-  if (document.getElementById('insertMail')) {
-    let name = "contact" ; // Update yours informations here
-    let domain = "yourbandname.com" ; // Update yours informations here
-    //let subject = "subject=Formulaire Tuco" ;
-    let divMail = document.getElementById('insertMail');
-    let newAhref = document.createElement('a');
-    newAhref.href = "mailto:" + name + '@' + domain;
-    newAhref.innerHTML = name + '@' + domain;
-    divMail.appendChild(newAhref);
-  }
-})
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const mainImage = document.getElementById('mainImage');
