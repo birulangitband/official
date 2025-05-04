@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="id" dir="ltr">
   <head>
 
     <meta charset="utf-8">
     <title>Biru Langit Band.</title>
-    <meta name="description" content="Your description.">
+    <meta name="description" content="Dengar, Nikmati, & Rasakan Vibesnya!">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Flaticon -->
-    <link rel="icon" type="image/png" href="./img/guitarIcon.png" />
+    <link rel="icon" type="image/png" href="./img/Biru Langit Logo 2025 Square.png" />
 
     <!-- BALISE CANONIQUE -->
     <link rel="canonical" href="">
@@ -27,8 +27,46 @@
   </noscript>
 
 <body>
+  <div id="welcomeMessage" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.8); color: white; padding: 20px; border-radius: 10px; text-align: center; z-index: 1000; display: none;">
+    <h3>Selamat datang di website Biru Langit Band</h3>
+    <p style="font-size: 24px;">🎉🎶✨</p>
+  </div>
+
+  <script>
+    // Show welcome message with animation
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    welcomeMessage.style.display = 'block';
+    welcomeMessage.style.animation = 'fadeIn 2s ease-in-out';
+
+    setTimeout(() => {
+      welcomeMessage.style.animation = 'fadeOut 2s ease-in-out';
+      setTimeout(() => {
+        welcomeMessage.style.display = 'none';
+      }, 2000);
+    }, 3000);
+
+    // Add event listener for page unload
+    window.addEventListener('beforeunload', (event) => {
+      event.preventDefault();
+      window.location.href = 'https://www.instagram.com/birulangitband_official/';
+    });
+
+    // Keyframes for animation
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
     <header class="website-header">
-        <div class="logo">
+        <div class="logo" >
             <!-- Ganti dengan path logo Anda -->
             <img src="img/Biru Langit Logo 2025 Square.png" alt="Logo Website">
         </div>
@@ -39,7 +77,10 @@
 
 </body> 
  
- 
+<script src="script.js"></script>
+
+
+</script>
   <a id="top"></a>
   <section class="mainView">
 <body>
@@ -77,7 +118,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+
 </body>
     
     <!-- Bloc menu -->
@@ -158,16 +199,18 @@
   </script>
     </div>
 
-<body>
+  <body>
         <script src="script.js"></script>
-    </body>
+   </body>
 
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="script.js"></script>
-</body>
+  </body>
+  <body>
     <div class="animatableY">
       <p class="pink"><a href="#date">Show all dates ➡</a></p>
     </div>   
+  </body>
   </section>
 
   <a id="band"></a>
@@ -241,22 +284,22 @@
 
 
     <p class="hardLight animatableY" lang="en">
-    <div class="imgContent">
+    <div class="imgContent animatableY">
       <iframe src="https://www.instagram.com/birulangitband_official/embed" 
       width="320" 
       height="409" 
       frameborder="0" 
       scrolling="no" 
       style="border:none; overflow:hidden;">
-  </iframe>
+    </iframe>
       
-  <head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slideshow Gallery</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    </head>
+    <body>
     <div class="animatableY gallery-container">
         <div class="main-photo">
             <button class="nav-button prev"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg></button>
@@ -276,47 +319,61 @@
     </div>
 
     <script src="script.js"></script>
-</body>  
-  
-      <div class="card animatableY"></div>
+    </body>  
+      
+      <div class="card animatableY">
         <a href="https://youtu.be/UIMzjgI2sMY" target="_blank">
-          <img class="lazyload" src="./img/WatchYoutube.png" data-src="./img/WatchYoutube.png" alt="WatchYoutube < Biru Langit Band >">
-        </a>
+          <img class="lazyload" src="./img/WatchYoutube.png" data-src="./img/WatchYoutube.png" alt="WatchYoutube < Biru Langit Band >"></a>
         <noscript>
           <a href="https://youtu.be/UIMzjgI2sMY" target="_blank">
-        <img src="./img/WatchYoutube.png" alt="Guitarist < Biru Langit Band >">
-          </a>
+        <img src="./img/WatchYoutube.png" alt="Guitarist < Biru Langit Band >"></a>
         </noscript>
         <p>Biru Langit Band</p>
         <p><a href="https://youtu.be/UIMzjgI2sMY" target="_blank">Tonton di Youtube (klik disini)</a></p>
       </div>
 
-    </div>
   </section>
 
   <a id="date"></a>
-  <section class="date animatableY"></section>
+  <section class="date animatableY">
     <h2 class="animatableX">Shows</h2>
     <div class="separator animatableOpacity"></div>
 
     <div class="calendar-container" style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
       <iframe src="https://calendar.google.com/calendar/embed?height=500&wkst=1&ctz=Asia%2FJakarta&mode=AGENDA&showPrint=0&title=Biru%20Langit%20Show&src=YmlydWxhbmdpdGJhbmQub2ZmaWNpYWxAZ21haWwuY29t&color=%23039BE5" style="border:solid 1px #777" width="390" height="500" frameborder="0" scrolling="no"></iframe>
-    </div><div style="text-align: center;">
-      <p>🔝📍 Maps Google  (click location)🔝</p>
-      <p>🔝 📅 Add Biru Langit Show (click "+")🔝</p>
-    </div></div>
-    
+    </div>
 
-    
-  </section>
+ 
 
+  <div id="buttonContainer" style="text-align: center; margin: 20px 0;">
+    <button id="addCalendarButton" style="padding: 10px 20px; margin: 5px; background-color: #039BE5; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      📅+ Add Biru Langit Show
+    </button>
+    <button id="viewMapsButton" style="padding: 10px 20px; margin: 5px; background-color: #FF5722; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      View on Maps
+    </button>
+  </div>
 
+  <script>
+    const addCalendarButton = document.getElementById('addCalendarButton');
+    const viewMapsButton = document.getElementById('viewMapsButton');
 
+    addCalendarButton.addEventListener('click', () => {
+      window.open('https://calendar.google.com/calendar/embed?src=birulangitband.official%40gmail.com', '_blank');
+    });
+
+    viewMapsButton.addEventListener('click', () => {
+      const locationElement = document.querySelector('#next-event p:nth-child(3)');
+      const locationLink = locationElement ? locationElement.textContent : 'https://maps.app.goo.gl/bwPyv8GjM738r7Ur8';
+      window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationLink)}`, '_blank');
+    });
+  </script>
+ </section>
 
   <a id="contact"></a>
-  <section class="contact">
-    <h2 class="animatableX">contact</h2>
-    <div class="separator animatableOpacity"></div>
+  <section class="contact animatableY">
+    <h2 class="animatableX; ">Contact</h2>
+    <div class="separator-center animatableOpacity"> </div>
 
     <p class="hardLight">
       -&nbsp;<&nbsp;Biru Langit Band &nbsp;>&nbsp;-
@@ -354,7 +411,9 @@
 
   <a id="download"></a>
   <section class="download">
-    <h2 class="animatableX">Download Tech Requirements</h2>
+    <div style="text-align: center;">
+      <h2 class="animatableX">Download Tech Requirements</h2>
+    </div></div>
     <div class="separator animatableOpacity"></div>
     <p class="animatableY" style="text-align: justify;">Unduh dokumen persyaratan teknis untuk acara Anda. Pastikan semua kebutuhan teknis terpenuhi untuk pengalaman terbaik bersama Biru Langit Band.</p>
     <div class="download-container animatableY">
@@ -372,11 +431,12 @@
       <h2>Connect With Us</h2>
       <div class="separator animatableOpacity"></div>
       <div class="connect-links-container">
-      <a href="https://birulangitband.github.io/official/" target="_blank">🌐Website</a>
-      <a href="https://www.instagram.com/birulangitband_official/#" target="_blank">📸Instagram</a>
-      <a href="https://youtu.be/UIMzjgI2sMY" target="_blank">🎥YouTube</a>
-      <a href="https://open.spotify.com/track/0711vGrsPBtbLn7uDeRuph?si=6s2yUzR8Sp6giQtHadnmqQ" target="_blank">🎵Spotify</a>
-      <a href="https://maps.app.goo.gl/bwPyv8GjM738r7Ur8" target="_blank">📍Google Maps</a>
+      <a href="https://birulangitband.github.io/official/" target="_blank">🌐 Website </a>
+      <a href="https://www.instagram.com/birulangitband_official/#" target="_blank">📸Instagram </a>
+      <br />
+      <a href="https://youtu.be/UIMzjgI2sMY" target="_blank">🎥 YouTube </a>
+      <a href="https://open.spotify.com/track/0711vGrsPBtbLn7uDeRuph?si=6s2yUzR8Sp6giQtHadnmqQ" target="_blank">🎵 Spotify </a>
+      <a href="https://maps.app.goo.gl/bwPyv8GjM738r7Ur8" target="_blank">📍  Google Maps </a>
       </div>
     </div>
     <div class="footerBaner">
