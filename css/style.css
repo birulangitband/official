@@ -236,7 +236,7 @@ main {
 .ss-menu {
   position: fixed;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   top: 5%;
   right: 5%;
@@ -333,11 +333,46 @@ main {
 
 .visible6 {
   opacity: 1;
-  transform: translateY(375px);
+  transform: translateY(450px);
   transition: all ease-in-out 250ms;
   transition-delay: 150ms;
   z-index: 1;
 }
+
+.visible7 {
+  opacity: 1;
+  transform: translateY(525px);
+  transition: all ease-in-out 250ms;
+  transition-delay: 150ms;
+  z-index: 1;
+}
+
+.menu-text {
+  font-size: 15px;
+  color: #ffffff;
+  text-align: right;
+  
+  transform: translateY(33px);
+  padding: 0 0px; /* 20px kiri & kanan */
+  margin: 10px 0; /* Jarak atas-bawah */
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
+  margin: 10px 0;
+  text-shadow: 
+    1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black,
+    0 1px 0 black,
+    0 -1px 0 black,
+    1px 0 0 black,
+    -1px 0 0 black,
+    2px 2px 4px black;
+}
+
+
 
 section {
   min-height: 0vh;
