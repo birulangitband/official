@@ -9,6 +9,7 @@ $(function () {
             $('.ss-menu4').addClass('visible4');
             $('.ss-menu5').addClass('visible5');
             $('.ss-menu6').addClass('visible6');
+            $('.ss-menu7').addClass('visible7');
         } else {
             $('.ss-menu1').removeClass('visible1');
             $('.ss-menu2').removeClass('visible2');
@@ -16,6 +17,7 @@ $(function () {
             $('.ss-menu4').removeClass('visible4');
             $('.ss-menu5').removeClass('visible5');
             $('.ss-menu6').removeClass('visible6');
+            $('.ss-menu7').removeClass('visible7');
         }
     })
 })
@@ -28,6 +30,7 @@ $(function () {
       $('.ss-menu4').removeClass('visible4');
       $('.ss-menu5').removeClass('visible5');
       $('.ss-menu6').removeClass('visible6');
+      $('.ss-menu7').removeClass('visible7');
     })
 })
 $(function () {
@@ -40,6 +43,7 @@ $(function () {
           $('.ss-menu4').removeClass('visible4');
           $('.ss-menu5').removeClass('visible5');
           $('.ss-menu6').removeClass('visible6');
+          $('.ss-menu7').removeClass('visible7');
         }
     })
 })
